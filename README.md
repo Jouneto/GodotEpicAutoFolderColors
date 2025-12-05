@@ -13,7 +13,9 @@ It works - end result is as shown below BUT with some extra steps (ig because it
 
 ## Settings
 **Don't Check Sub-Folders** - only res:// folders will be collored but not their sub-folders.
+
 **Sub-Folders Color By Layers** - color sub-folders starting from on how deep is it, otherwise sub-folders are colored by next color index (counting from its parent color index).
+
 **Merge With Old Config** - add old (not overwritten) folder color settings - useful with "Don't Check Sub-Folders" option for custom sub folder colors
 
 ## Mentioned Extra Steps (temporary):
