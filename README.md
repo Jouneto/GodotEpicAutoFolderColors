@@ -7,6 +7,8 @@ idk how to make plugins tho
 
 # WARNING FOR ALPHA VERSION (0.8)
 It works - end result is as shown below BUT with some extra steps... 
+
+## Preview
 ![image](images/ss1.png)
 
 ## Mentioned Extra Steps (temporary):
