@@ -3,13 +3,18 @@ Automatically changes folders color in godot inseppctor!1!
 
 ![image](images/icon.png)
 
-idk how to make plugins tho
+idk how to make plugins tho - aka my first one
 
 # WARNING FOR ALPHA VERSION (0.8)
-It works - end result is as shown below BUT with some extra steps... 
+It works - end result is as shown below BUT with some extra steps (ig because its literally editting project.godot file lol)... 
 
 ## Preview
 ![image](images/ss1.png)
+
+## Settings
+**Don't Check Sub-Folders** - only res:// folders will be collored but not their sub-folders.
+**Sub-Folders Color By Layers** - color sub-folders starting from on how deep is it, otherwise sub-folders are colored by next color index (counting from its parent color index).
+**Merge With Old Config** - add old (not overwritten) folder color settings - useful with "Don't Check Sub-Folders" option for custom sub folder colors
 
 ## Mentioned Extra Steps (temporary):
 1. In "Epic Debug Panel" (at bottom panel):
