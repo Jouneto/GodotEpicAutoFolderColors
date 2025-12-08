@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc0oar01igvwr"]
+
+[ext_resource type="Script" uid="uid://cvn86tb1c5en4" path="res://addons/epic_auto_folder_colors/modules/dock_getter_module.gd" id="1_4o1rg"]
+
+[node name="DockGetterModule" type="Node"]
+script = ExtResource("1_4o1rg")

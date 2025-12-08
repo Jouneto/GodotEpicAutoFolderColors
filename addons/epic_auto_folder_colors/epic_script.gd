@@ -1,13 +1,18 @@
 @tool
 extends EditorPlugin
 
-const EPIC_DEBUG_PANEL_DOCK_UID: String = "uid://bsmjj40v7b88v"
-const PATH_CONFIG_FILE: String = "res://EpicAutoFolderColors/config/meow.dat"
+
+const UID_DOCK_GETTER_MODULE: String = "uid://bc0oar01igvwr"
+const UID_COLOR_FOLDERS_MODULE: String = "uid://cmdfas04kc7o4"
+const UID_EPIC_DEBUG_PANEL_DOCK: String = "uid://bsmjj40v7b88v"
 
 var epic_debug_panel_dock: Control
 
-## dictionary that contains paths and colors
-var path_colors: Dictionary = {}
+#region modules
+var dock_getter_module: EAFCDockGetterModule
+var color_folders_module: EAFCColorFoldersModule
+#endregion
+
 
 func _enable_plugin() -> void:
 	print_rich("[b][rainbow][wave]Epic Auto Folder Colors Plugin Is Enabled!1!![/wave][/rainbow][/b]")
@@ -15,30 +20,33 @@ func _enable_plugin() -> void:
 func _disable_plugin() -> void:
 	print_rich("[b]Goodbye.[b]")
 
+
 func _enter_tree() -> void:
-	# Initialization of the plugin goes here.
-	epic_debug_panel_dock = preload(EPIC_DEBUG_PANEL_DOCK_UID).instantiate()
+	# create debug panel dock
+	epic_debug_panel_dock = preload(UID_EPIC_DEBUG_PANEL_DOCK).instantiate()
 	add_control_to_bottom_panel(epic_debug_panel_dock, "Epic Debug Panel")
+
+	# create and add important modules
+	dock_getter_module = load(UID_DOCK_GETTER_MODULE).instantiate()
+	add_child(dock_getter_module)
+	color_folders_module = load(UID_COLOR_FOLDERS_MODULE).instantiate()
+	add_child(color_folders_module)
 
 func _exit_tree() -> void:
 	# Clean-up of the plugin goes here.
 	remove_control_from_bottom_panel(epic_debug_panel_dock)
-	if not epic_debug_panel_dock == null: epic_debug_panel_dock.free()
+	if epic_debug_panel_dock: epic_debug_panel_dock.queue_free()
+	if dock_getter_module: dock_getter_module.queue_free()
+	if color_folders_module: color_folders_module.queue_free()
+
+	# refresh filesystem
+	EditorInterface.get_resource_filesystem().scan()
 
 
-## saves config file containing all collored pahts w/ csolors
-func save_config_file() -> void:
-	var config_file : ConfigFile = ConfigFile.new()
-	
-	# use file if it exists
-	if FileAccess.file_exists(PATH_CONFIG_FILE):
-		config_file.load(PATH_CONFIG_FILE)
-
-	config_file.set_value("MEOW", "PATH", path_colors)
-	
-	# save file
-	if not config_file.save(PATH_CONFIG_FILE) == OK:
-		print_plugin("[color=red]ERROR WHILE SAVING CONFIG FILE!!![color=#fff]")
+func _ready() -> void:
+	# connect signals
+	dock_getter_module.file_system.filesystem_changed.connect(func(): color_folders_module.color(dock_getter_module.get_root_path()))
+	color_folders_module.color(dock_getter_module.get_root_path())
 
 ## prints like noramly but adds [E.A.F.C.] (Epic Auto Color Folders)
 func print_plugin(debug_message) -> void:

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmdfas04kc7o4"]
+
+[ext_resource type="Script" uid="uid://cvjv2fe1nqh6t" path="res://addons/epic_auto_folder_colors/modules/color_folders_module.gd" id="1_m2k3w"]
+
+[node name="ColorFoldersModule" type="Node"]
+script = ExtResource("1_m2k3w")

@@ -13,55 +13,63 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_t82pj")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.23695, 0.008999992, 0.3, 0.02745098)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 0.95
-anchor_bottom = 0.95
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="NotSubFoldersCheck" type="CheckBox" parent="ColorRect/VBoxContainer"]
+[node name="NotSubFoldersCheck" type="CheckBox" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 button_pressed = true
 text = "Don't Check Sub-Folders"
 
-[node name="SubFoldersColorLayersCheck" type="CheckBox" parent="ColorRect/VBoxContainer"]
+[node name="SubFoldersColorLayersCheck" type="CheckBox" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Sub-Folders Color By Layers"
 
-[node name="MergeOldConfigCheck" type="CheckBox" parent="ColorRect/VBoxContainer"]
+[node name="MergeOldConfigCheck" type="CheckBox" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 button_pressed = true
 text = "Merge With Old Config"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
-[node name="ManualChangeColorsButton" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer"]
+[node name="ManualChangeColorsButton" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Manual Change Folder Colors"
 
-[node name="RefreshFilesystemButton" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer"]
+[node name="RefreshFilesystemButton" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Refresh File System
 "
+
+[node name="ReloadPluginButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reload Plugin"
+
+[node name="DebugButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Debug Button That I Have No Idea What It Does"
