@@ -6,10 +6,10 @@ class_name EAFCDockGetterModule
 
 
 var file_system: EditorFileSystem = EditorInterface.get_resource_filesystem()
-var _dock: FileSystemDock = EditorInterface.get_file_system_dock()
+var dock: FileSystemDock = EditorInterface.get_file_system_dock()
 var _tree: Tree:
 	get:
-		if not _tree: _set_file_system_tree(_dock)
+		if not _tree: _set_file_system_tree(dock)
 		return _tree
 var _root: TreeItem:
 	get:
