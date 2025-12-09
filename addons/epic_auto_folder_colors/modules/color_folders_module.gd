@@ -56,8 +56,9 @@ func _color_paths(item: TreeItem) -> void:
 		var path_already_checked: bool = path in _checked_paths
 		var path_is_ultra_ignored: bool = path in ultra_ignore_paths
 		var path_is_ignored: bool = path in ignore_paths# or ignore_mode_enabled
+		var path_is_folder: bool = path.ends_with("/")
 
-		if not path_already_checked and not path_is_ultra_ignored:
+		if not path_already_checked and not path_is_ultra_ignored and path_is_folder:
 			# print("coloring: %s" % item.get_metadata(0))
 			_checked_paths.append(path)
 
