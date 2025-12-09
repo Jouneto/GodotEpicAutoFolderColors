@@ -46,8 +46,10 @@ func _exit_tree() -> void:
 func _ready() -> void:
 	# connect signals
 	var tree: Tree = dock_getter_module.get_file_system_tree()
-	dock_getter_module.dock.display_mode_changed.connect(_update_color)
+	var file_system: EditorFileSystem = dock_getter_module.file_system
+
 	tree.draw.connect(_update_color)
+	dock_getter_module.dock.display_mode_changed.connect(_update_color)
 	dock_getter_module.file_system.filesystem_changed.connect(_update_color)
 
 	_update_color()
